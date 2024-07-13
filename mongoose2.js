@@ -2,8 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-const uri = 'mongodb+srv://jogi661:@N$hu-11228@cluster0.7p6vf67.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-mongoose.connect(uri);
+const uri = 'mongodb+srv://cluster0.7p6vf67.mongodb.net/?retryWrites=true&w=majority'
+mongoose.connect(uri, {
+    dbName: "cluster0",
+    user: "jogi661",
+    pass: "@N$hu-11228",
+    autoIndex: true,
+    connectTimeoutMS: 300000,
+    maxPoolSize: 5,
+    minPoolSize: 1,
+});
 
 const bookSchema = new mongoose.Schema({
     title: String,
