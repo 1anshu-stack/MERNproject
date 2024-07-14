@@ -17,17 +17,20 @@ const bookSchema = new mongoose.Schema({
     title: String,
     author: String
 })
-const Books = new mongoose.model('Book', bookSchema);
+const Books = new mongoose.model('books', bookSchema);
 
+app.use(express.json());
 app.get('/books', async (req, res)=>{
     try{
         const books = await Books.find();
+        console.log(books);
         res.json(books);
     }
     catch(err){
         res.status(500).json({erro: 'some external error' })
     }
 })
+
 
 app.post('/books', async (req, res)=>{
     console.log(req.body);
