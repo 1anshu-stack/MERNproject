@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
 const port = 8000;
-const connectDB = require('./db/dbConnection')
+const connectDB = require('./db/dbConnection');
 const myDatabase = require('./db/dbSchema');
+const cors = require('cors');
+
+//enable cors
+app.use(cors());
 
 //middleware for parsing json
 app.use(express.json());
